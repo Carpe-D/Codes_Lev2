@@ -1,0 +1,17 @@
+def solution(priorities,location):
+    index=1
+    while(True):
+        max_value=max(priorities)
+        if(priorities[0]<max_value):
+            priorities.append(priorities[0])
+            priorities.remove(priorities[0])
+            location=location-1
+            if(location==-1):
+                location=len(priorities)-1
+        else:
+            if(location==0):
+                return index
+            else:
+                priorities.remove(priorities[0])
+                index=index+1
+                location=location-1
