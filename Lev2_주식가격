@@ -1,0 +1,11 @@
+def solution(prices):
+    answer = []
+    for i in range(0,len(prices)-1):
+        for k in range(i+1,len(prices)):
+            if prices[i]>prices[k]:
+                answer.append(k-i)
+                break
+        if prices[i]<=prices[k]:
+            answer.append(len(prices)-1-i)
+    answer.append(0)
+    return answer
