@@ -1,0 +1,21 @@
+def solution(skill, skill_trees):
+    answer = 0
+    left_skills=''
+    for i in range(0,len(skill_trees)):
+        index=0
+        for j in range(0,len(skill_trees[i])):
+            if skill_trees[i][j] in skill and skill_trees[i][j]!=skill[index]:
+                break
+            elif skill_trees[i][j] in skill and skill_trees[i][j]==skill[index]:
+                left_skills+=skill_trees[i][j]
+                index+=1
+        
+    return answer
+                
+                
+            
+    
+    
+skill_trees=["CED"]
+skill="CBD"
+solution(skill,skill_trees)
