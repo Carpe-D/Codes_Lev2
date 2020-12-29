@@ -1,0 +1,27 @@
+import heapq
+
+def solution(scoville, K):
+    answer=0
+    compare=False
+    heapq.heapify(scoville)
+    while(scoville[0]<K):
+        mixed_food=scoville[0]
+        heapq.heappop(scoville)
+        mixed_food+=scoville[0]*2
+        heapq.heappop(scoville)
+        heapq.heappush(scoville,mixed_food)
+        if(len(scoville)<2):
+            if(scoville[0]>=K):
+                compare=True
+                answer+=1
+                break
+            else:
+                compare=False
+                break
+        else:
+            compare=True
+        answer+=1
+    if(compare):
+        return answer
+    else:
+        return -1
