@@ -1,0 +1,10 @@
+def solution(s):
+    answer = ''
+    new_list=[]
+    new_list=(s.split())
+    for i in range(0,len(new_list)):
+        new_list[i]=int(new_list[i])
+    answer+=str(min(new_list))
+    answer+=" "
+    answer+=str(max(new_list))
+    return answer
