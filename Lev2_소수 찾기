@@ -1,0 +1,36 @@
+from itertools import permutations
+
+def solution(numbers):
+    answer = 0
+    new_list=[]
+    new_string=''
+    for i in range(1,len(numbers)+1):
+        permute=permutations(numbers,i)
+        permute=list(permute)
+        for j in range(0,len(permute)):
+            for k in range(0,len(permute[j])):
+                new_string+=permute[j][k]
+            if(int(new_string) in new_list):
+                new_string=''
+                continue
+            else:
+                new_list.append(int(new_string))
+                new_string=''
+                
+    for i in range(0,len(new_list)):
+        if new_list[i]==0:
+            continue
+        elif new_list[i]==1:
+            continue
+        elif new_list[i]==2:
+            answer+=1
+        else:
+            compare=True
+            for k in range(2,new_list[i]):
+                if new_list[i]%k==0:
+                    compare=False    
+                    break
+            if(compare):
+                answer+=1
+                
+    return answer
