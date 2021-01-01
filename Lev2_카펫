@@ -1,0 +1,12 @@
+def solution(brown, yellow):
+    answer = []
+    height=1
+    width=1
+    while(True):
+        if (2*(yellow/height+height)+4==brown):
+            width=yellow/height
+            answer.append(width+2)
+            answer.append(height+2)
+            return answer
+        else:
+            height+=1
