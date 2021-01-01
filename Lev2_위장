@@ -1,0 +1,15 @@
+def solution(clothes):
+    closet={}
+    result=1
+    for element in clothes:
+        key=element[1]
+        value=element[0]
+        if key in closet:
+            closet[key].append(value)
+        else:
+            closet[key]=[value]
+            
+    for i in closet.keys():
+        result=result*((len(closet[i])+1))
+        
+    return result-1
