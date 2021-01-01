@@ -1,0 +1,15 @@
+def solution(people, limit):
+    answer = 0
+    people.sort()
+    start_index=0
+    end_index=-1
+    while(start_index<=(len(people)+end_index)):
+        if(people[start_index]+people[end_index]<=limit):
+            answer+=1
+            start_index+=1
+            end_index-=1
+        else:
+            end_index-=1
+            answer+=1
+    
+    return answer
