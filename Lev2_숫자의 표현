@@ -1,0 +1,14 @@
+def solution(n):
+    answer = 0
+    i=1
+    while(i<=n):
+        sum=0
+        for k in range(i,n+1):
+            sum+=k
+            if(sum==n):
+                answer+=1
+                break
+            elif(sum>n):
+                break
+        i+=1
+    return answer
