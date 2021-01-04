@@ -1,0 +1,22 @@
+def solution(n):
+    answer=0
+    number=n+1
+    n_to_bin=str(bin(n))
+    n_to_bin=n_to_bin[2:]
+    number_one_count=0
+    for i in range(0,len(n_to_bin)):
+        if (n_to_bin[i]=='1'):
+            number_one_count+=1
+    while(True):
+        count=0
+        number_to_bin=str(bin(number))
+        number_to_bin=number_to_bin[2:]
+        for k in range(0,len(number_to_bin)):
+            if(number_to_bin[k]=='1'):
+                count+=1
+        if(count==number_one_count):
+            answer=number    
+            break
+        else:
+            number+=1
+    return answer
