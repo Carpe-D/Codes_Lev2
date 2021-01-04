@@ -1,0 +1,40 @@
+def solution(arr):
+    answer = 0
+    lcm=0
+    list=[]
+    great_number=0
+    if(len(arr)==1):
+        return arr[0]
+    elif(len(arr)==2):
+        great_number=gcd(arr[0],arr[1])
+        lcm=arr[0]*arr[1]/great_number
+        return lcm
+    else:
+        list=arr[2:]
+        great_number=gcd(arr[0],arr[1])
+        lcm=arr[0]*arr[1]//great_number
+        while(len(list)!=0):
+            great_number=gcd(lcm,list[0])
+            lcm=lcm*list[0]/great_number
+            list.pop(0)
+    return lcm
+    
+    
+
+
+
+def gcd(a,b):
+    if(a==b):
+        return a
+    elif (a<b):
+        for i in range(a,0,-1):
+            if a%i==0 and b%i==0:
+                return i
+    else:
+        for i in range(b,0,-1):
+            if a%i==0 and b%i==0:
+                return i
+                
+                
+arr=[14,2,7]
+solution(arr)
