@@ -1,0 +1,11 @@
+def solution(numbers, target):
+    answer=0
+    sup=[0]
+    for i in numbers:
+        sub=[]
+        for j in sup:
+            sub.append(j+i)
+            sub.append(j-i)
+        sup=sub
+    answer=sup.count(target)
+    return answer
