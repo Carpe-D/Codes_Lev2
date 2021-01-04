@@ -1,0 +1,14 @@
+def solution(s):
+    answer = ''
+    index=1
+    for i in range(0,len(s)):
+        if (s[i].isalpha() or s[i].isdigit()):
+            if(index==1):
+                answer+=s[i].upper()
+                index+=1
+            else:
+                answer+=s[i].lower()
+        else:
+            index=1
+            answer+=s[i]
+    return answer
