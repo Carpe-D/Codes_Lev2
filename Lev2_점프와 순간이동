@@ -1,0 +1,6 @@
+def solution(N):
+    answer=0
+    n_to_bin=str(bin(N))
+    n_to_bin=n_to_bin[2:]
+    answer=n_to_bin.count('1')
+    return answer
