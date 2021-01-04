@@ -1,0 +1,8 @@
+def solution(nums):
+    list=nums
+    nums=set(nums)
+    if len(nums)>=len(list)//2:
+        answer=len(list)//2
+    else:
+        answer=len(nums)
+    return answer
