@@ -1,0 +1,39 @@
+def solution(str1, str2):
+    answer = 0
+    str1=str1.lower()
+    str2=str2.lower()
+    new_string=''
+    str1_jarcard=[]
+    str2_jarcard=[]
+    sum_jarcard=[]
+    for i in range(0,len(str1)-1):
+        for k in range(i,i+2):
+            if(str1[k].isalpha()):
+                new_string+=str1[k]
+            else:
+                break
+        if(len(new_string)==2):
+            str1_jarcard.append(new_string)
+        new_string=''
+        
+    for i in range(0,len(str2)-1):
+        for k in range(i,i+2):
+            if(str2[k].isalpha()):
+                new_string+=str2[k]
+            else:
+                break
+        if(len(new_string)==2):
+            str2_jarcard.append(new_string)
+        new_string=''
+        
+    common_jarcard=str1_jarcard
+    
+        
+        
+
+        
+str1="FRANCE"
+str2="french"
+solution(str1,str2)
+            
+            
