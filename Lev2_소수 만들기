@@ -1,0 +1,16 @@
+from itertools import combinations
+
+def solution(nums):
+    answer=0
+    combination=list(combinations(nums,3))
+    for i in range(0,len(combination)):
+        if(PrimeNumber(sum(combination[i]))):
+            answer+=1
+    return answer
+    
+
+def PrimeNumber(number):
+    for i in range(2,number):
+        if(number%i==0):
+            return False
+    return True
