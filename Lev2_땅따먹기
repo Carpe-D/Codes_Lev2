@@ -1,0 +1,14 @@
+def solution(land):
+    list=[]
+    answer=[]
+    for i in range(1,len(land)):
+        for k in range(0,4):
+            for j in range(0,4):
+                if(j==k):
+                    continue
+                else:
+                    list.append(land[i-1][j])
+            land[i][k]+=max(list)
+            list=[]
+    answer=max(land[-1])
+    return answer
