@@ -1,0 +1,50 @@
+def solution(str1, str2):
+    answer = 0
+    str1=str1.lower()
+    str2=str2.lower()
+    new_string=''
+    str1_jarcard=[]
+    str2_jarcard=[]
+    sum_jarcard=[]
+    count_common_jarcard=0
+    count_sum_jarcard=0
+    for i in range(0,len(str1)-1):
+        for k in range(i,i+2):
+            if(str1[k].isalpha()):
+                new_string+=str1[k]
+            else:
+                break
+        if(len(new_string)==2):
+            str1_jarcard.append(new_string)
+        new_string=''
+        
+    for i in range(0,len(str2)-1):
+        for k in range(i,i+2):
+            if(str2[k].isalpha()):
+                new_string+=str2[k]
+            else:
+                break
+        if(len(new_string)==2):
+            str2_jarcard.append(new_string)
+        new_string=''
+        
+    common_jarcard=list(set(str1_jarcard+str2_jarcard))
+    for i in range(0,len(common_jarcard)):
+        if common_jarcard[i] in str1_jarcard and common_jarcard[i] in str2_jarcard:
+            count_common_jarcard=count_common_jarcard+min(str1_jarcard.count(common_jarcard[i]),str2_jarcard.count(common_jarcard[i]))
+            count_sum_jarcard=count_sum_jarcard+max(str1_jarcard.count(common_jarcard[i]),str2_jarcard.count(common_jarcard[i]))
+        else:
+            count_sum_jarcard+=1
+    if(count_sum_jarcard==0):
+        return 65536
+    answer=int(count_common_jarcard/count_sum_jarcard*65536)
+    return answer
+    
+    
+        
+        
+
+        
+str1="aa1+aa2"
+str2="AAAA12"
+solution(str1,str2)
