@@ -1,0 +1,22 @@
+def solution(cacheSize, cities):
+    answer = 0
+    
+    cache=[]
+    
+    if(cacheSize==0):
+        answer=len(cities)*5
+        return answer
+    
+    for k in range(0,len(cities)):
+        cities[k]=cities[k].lower()
+        
+        if cities[k] in cache:
+            answer+=1
+            cache.remove(cities[k])
+            cache.append(cities[k])
+        else:
+            answer+=5
+            if len(cache)>=cacheSize:
+                cache.pop(0)
+            cache.append(cities[k])
+    return answer
