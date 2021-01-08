@@ -1,0 +1,48 @@
+def checkBracket(text): 
+    openBracket = 0
+    closeBracket = 0
+    for bracket in text:
+        if bracket == '(':
+            openBracket += 1
+        else:
+            closeBracket += 1
+        if openBracket < closeBracket:
+            return False
+    
+    return True
+
+def divideBracket(p):
+    if p == '':
+        return '' 
+    openBracket = 0
+    closeBracket = 0
+    lastBracket = ''
+
+    for index in range(len(p)):
+        if p[index] == '(':
+            openBracket += 1
+        else:
+            closeBracket += 1
+        lastBracket = p[index]
+        if openBracket == closeBracket:
+            if lastBracket == ')': 
+                
+                return p[:index+1] + divideBracket(p[index+1 :])
+            else: 
+                return reverse(p[:index+1], divideBracket(p[index+1 :]))
+
+def reverse(u, v) : 
+    empty = '('
+    empty += v + ')'
+    for i in range(1, len(u)-1):
+        if u[i] == '(':
+            empty += ')'
+        else:
+            empty += '('
+    return empty
+
+def solution(p):
+    if checkBracket(p):
+        return p
+    
+    return divideBracket(p)
