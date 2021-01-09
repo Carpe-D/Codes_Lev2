@@ -1,24 +1,6 @@
+import re
+
 def solution(files):
-    answer = []
-    head=[]
-    head_string=''
-    number=[]
-    number_string=''
-    index=0
-    new_files=[]
-    for i in range(0,len(files)):
-        for k in range(0,len(files[i])):
-            if(files[i][k].isalpha()):
-                head_string+=files[i][k]
-            elif(files[i][k].isdecimal()):
-                number_string+=files[i][k]
-            if (files[i][k].isdecimal() is True and files[i][k+1].isdecimal() is False):
-                break
-        new_files.append([head_string.lower(),int(number_string),index])
-        head_string=''
-        number_string=''
-        index+=1
-    new_files=sorted(new_files,key=lambda x: (x[0],x[1],x[2]))
-    for file in new_files:
-        answer.append(files[file[2]])
-    return answer
+    temp=[re.split(r"([0-9]+)",s) for s in files]
+    sort=sorted(temp,key=lambda x: (x[0].lower(),int(x[1])))
+    return [''.join(s) for s in sort]
