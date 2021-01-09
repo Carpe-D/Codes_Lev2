@@ -1,0 +1,29 @@
+def solution(files):
+    answer = []
+    head=[]
+    head_string=''
+    number=[]
+    number_string=''
+    tail=[]
+    for i in range(0,len(files)):
+        files[i]=files[i].lower()
+    for i in range(0,len(files)):
+        for k in range(0,len(files[i])):
+            if(files[i][k].isalpha()):
+                head_string+=files[i][k]
+            elif(files[i][k].isdecimal()):
+                number_string+=files[i][k]
+            if (files[i][k].isdecimal() is True and files[i][k+1].isdecimal() is False):
+                tail.append(files[i][k+1:])
+                break
+        head.append(head_string)
+        number.append(int(number_string))
+        head_string=''
+        number_string=''
+                
+    
+    
+    
+    
+files=['img12.png', 'img10.png', 'img02.png', 'img1.png', 'IMG01.GIF', 'img2.JPG']
+solution(files)            
