@@ -1,0 +1,44 @@
+def solution(record):
+    answer = []
+    activity=[]
+    user_id=[]
+    name=[]
+    answer_string=''
+    for i in range(len(record)):
+        activity.append(record[i].split()[0])
+        user_id.append(record[i].split()[1])
+        if(record[i].split()[0]=='Leave'):
+            for k in range(i-1,-1,-1):
+                if(user_id[k]==record[i].split()[1]):
+                    name.append(name[user_id.index(user_id[k])])
+                    break          
+        else:
+            name.append(record[i].split()[2])
+            
+        if(record[i].split()[0]=='Change'):
+            for k in range(0,i):
+                if(user_id[k]==record[i].split()[1]):
+                    name[k]=record[i].split()[2]
+                    
+        if(record[i].split()[0]=='Enter' and i!=0 and user_id[i] in user_id[0:i-1]):
+            for k in range(0,i):
+                if(user_id[k]==user_id[i]):
+                    name[k]=name[i]
+            
+    for k in range(0,len(name)):
+        if(activity[k]=='Change'):
+            continue
+        elif(activity[k]=='Enter'):
+            answer_string+=(name[k]+'님이 들어왔습니다.')
+        else:
+            answer_string+=(name[k]+'님이 나갔습니다.')
+        answer.append(answer_string)
+        answer_string=''
+         
+    
+    return answer
+    
+    
+    
+record=["Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"]
+solution(record)
