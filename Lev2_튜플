@@ -1,0 +1,11 @@
+def solution(s):
+    answer=[]
+    s=s[2:-2]
+    s=s.split("},{")
+    s.sort(key=len)
+    for i in range(len(s)):
+        distinguish=s[i].split(',')
+        for k in range(len(distinguish)):
+            if (int(distinguish[k]) not in answer):
+                answer.append(int(distinguish[k]))
+    return answer
