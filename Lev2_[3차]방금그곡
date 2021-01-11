@@ -1,0 +1,39 @@
+def solution(m, musicinfos):
+    answer = []
+    playing_time=[]
+    m=changecode(m)
+    for i in range(0,len(musicinfos)):
+        melody=''
+        playing_time.append(calculatingTime(musicinfos,i))
+        musicinfos[i].split(',')[3]=changecode(musicinfos[i].split(',')[3])
+        if(playing_time[i]<len(musicinfos[i].split(','))):
+            melody=(musicinfos[i].split(',')[3])[0:playing_time[i]]
+        else:
+            melody+=(musicinfos[i].split(',')[3]*(playing_time[i]//len(musicinfos[i].split(',')[3])))
+            melody+=(musicinfos[i].split(',')[3])[0:(playing_time[i]%len(musicinfos[i].split(',')[3]))]    
+        if m in melody:
+            answer.append(musicinfos[i].split(',')[2])
+            
+    if len(answer) !=0:
+        answer=sorted(answer,key=len)
+        return answer[0]
+    else:
+        return "(None)"
+            
+    
+    
+        
+    
+    
+def calculatingTime(musicinfos,index):
+    hour=int((musicinfos[index].split(',')[1])[0:2])-int((musicinfos[index].split(',')[0])[0:2])
+    minute=int((musicinfos[index].split(',')[1])[3:])-int((musicinfos[index].split(',')[0])[3:])
+    return (60*hour + minute)
+    
+def changecode(code):
+    code=code.replace('C#','c')
+    code=code.replace('D#','d')
+    code=code.replace('F#','f')
+    code=code.replace('G#','g')
+    code=code.replace('A#','a')
+    return code
