@@ -1,0 +1,27 @@
+def solution(n, t, m, p):
+    all_string=''
+    answer=[]
+    number=0
+    result=''
+    count=0
+    while(len(all_string)<=t*m):
+        all_string+=(convert(number,n))
+        number+=1
+    for i in range(0,len(all_string)//m):
+        answer.append(all_string[m*i:m*(i+1)])
+    for k in range(0,len(answer)):
+        result+=(answer[k][p-1])
+        count+=1
+        if(count==t):
+            break
+    return result
+        
+    
+        
+def convert(number, base):
+    T = "0123456789ABCDEF"
+    q, r = divmod(number, base)
+    if q == 0:
+        return T[r]
+    else:
+        return str(convert(q, base) + T[r])
